@@ -329,7 +329,7 @@ const Dashboard = ({ user, onLogout }) => {
                   type="file"
                   id="file-upload"
                   onChange={handleFileSelect}
-                  accept="image/*,.pdf,.doc,.docx,.txt,.zip,.rar"
+                  accept="image/*,.pdf,.doc,.docx,.txt,.zip,.rar,.apk"
                 />
                 <label htmlFor="file-upload" className="file-upload-label">
                   {selectedFile ? selectedFile.name : 'Click to select a file'}

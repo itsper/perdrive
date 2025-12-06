@@ -31,19 +31,18 @@ const upload = multer({
     fileSize: 10 * 1024 * 1024, // 10MB limit
   },
   fileFilter: (req, file, cb) => {
-    // Allow common file types
-    const allowedTypes = /jpeg|jpg|png|gif|pdf|doc|docx|txt|zip|rar/;
+    // Allow common file types including txt and apk
+    const allowedTypes = /jpeg|jpg|png|gif|pdf|doc|docx|txt|zip|rar|apk/;
     const extname = allowedTypes.test(
       path.extname(file.originalname).toLowerCase()
     );
-    const mimetype = allowedTypes.test(file.mimetype);
 
-    if (mimetype && extname) {
+    if (extname) {
       return cb(null, true);
     } else {
       cb(
         new Error(
-          "Invalid file type. Only images, PDFs, documents, and archives are allowed."
+          "Invalid file type. Only images, PDFs, documents, text files, archives, and APK files are allowed."
         )
       );
     }
