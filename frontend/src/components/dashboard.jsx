@@ -14,7 +14,7 @@ const Dashboard = ({ user, onLogout }) => {
   const fetchFiles = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/files', {
+      const response = await fetch('https://perdrive-api.onrender.com/api/files', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -52,7 +52,7 @@ const Dashboard = ({ user, onLogout }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+      const response = await fetch(`https://perdrive-api.onrender.com/api/files/${fileId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const Dashboard = ({ user, onLogout }) => {
   const handleDelete = async (fileId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+      const response = await fetch(`https://perdrive-api.onrender.com/api/files/${fileId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -113,7 +113,7 @@ const Dashboard = ({ user, onLogout }) => {
   const handleDownload = async (fileId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/files/download/${fileId}`, {
+      const response = await fetch(`https://perdrive-api.onrender.com/api/files/download/${fileId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -163,7 +163,7 @@ const Dashboard = ({ user, onLogout }) => {
 
       setUploadProgress(0);
 
-      const response = await fetch('http://localhost:5000/api/files/upload', {
+      const response = await fetch('https://perdrive-api.onrender.com/api/files/upload', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
