@@ -1,0 +1,265 @@
+/* Import a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Reset & Base Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a; /* Deep dark blue background */
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* --- Main Container with Animated Background --- */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  /* Deep gradient background */
+  background: radial-gradient(circle at top left, #1e293b, #0f172a);
+  z-index: 1;
+}
+
+/* Ambient Background Glow Blobs */
+.login-container::before,
+.login-container::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 10s infinite ease-in-out;
+}
+
+.login-container::before {
+  background: #3b82f6; /* Blue blob */
+  top: -50px;
+  left: -50px;
+}
+
+.login-container::after {
+  background: #8b5cf6; /* Purple blob */
+  bottom: -50px;
+  right: -50px;
+  animation-delay: 5s;
+}
+
+/* --- Glassmorphism Card --- */
+.login-card {
+  background: rgba(30, 41, 59, 0.7); /* Translucent dark background */
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 20px rgba(59, 130, 246, 0.15); /* Subtle outer glow */
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Typography --- */
+.login-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  /* Gradient Text */
+  background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Form Elements --- */
+.form-group {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  transition: color 0.3s;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Input Focus State with Glow */
+input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* Input Hover State */
+input:hover {
+  border-color: #475569;
+}
+
+/* Error State for Inputs */
+input.error {
+  border-color: #ef4444;
+  animation: shake 0.4s ease-in-out;
+}
+
+/* --- Error Messages --- */
+.error-message {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.field-error {
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 6px;
+  display: block;
+}
+
+/* --- Action Button --- */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* --- Toggle Mode (Link) --- */
+.toggle-mode {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.link {
+  color: #60a5fa;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.link:hover {
+  color: #c084fc;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #c084fc;
+  transition: width 0.3s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* --- Animations --- */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+  
+  .login-card h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* --- Browser Autocomplete Fix (Dark Mode) --- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
